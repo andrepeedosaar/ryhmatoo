@@ -37,9 +37,14 @@ public class Elemendid {
 	final static ObservableList<Tabel> data = FXCollections.observableArrayList();
 
 	static ArrayList palk = new ArrayList();
+	static ArrayList andmed = new ArrayList();
 	
 	private static int langi_kogusumma = 0;
 	private static double paakide_arv = 0;
+	
+	public ArrayList getAndmed(){
+		return andmed;
+	}
 	
 	public static DropShadow dropShadow(){
 		DropShadow ds = new DropShadow();
@@ -137,8 +142,7 @@ public class Elemendid {
 		
 		Label phind = new Label("");
 		grid.add(phind, 4, 3);
-		
-		
+				
 		//Lisa nupu funktsionaalsused
 		h_lisa.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
@@ -152,8 +156,6 @@ public class Elemendid {
             	
             	paagid_kokku = Integer.parseInt(tf_kogu_paagid.getText());
 
-            	
-            	
             	//Liidab kokku ja leiab kogusumma
             	if(combo.getValue() == "Kerge"){
             		langi_kogusumma += 100*Integer.parseInt(tf_hek.getText());
@@ -170,8 +172,7 @@ public class Elemendid {
             	if(combo.getValue() == "Kohutav"){
             		langi_kogusumma += 350*Integer.parseInt(tf_hek.getText());
             	}
-            	
-            	
+            	    	
             	//Kontrollib kas koguhektarite arv klapib raskuste tasemetega 
             	if(hektar_hetk == hektar_kokku){
         			tf_hek.setEditable(false);
@@ -184,7 +185,7 @@ public class Elemendid {
         			h_lisa.setDisable(true);
         			phind.setText(Double.toString(langi_kogusumma/paagid_kokku));	
         		}
-            	System.out.print(palk);
+            	//System.out.print(palk);
             }
          });
 		
@@ -227,6 +228,14 @@ public class Elemendid {
             			tf_name.getText(),
             			Integer.parseInt(tf_parv.getText()),
             			Double.toString(Double.parseDouble((String)c_skill.getValue())/100*Double.parseDouble(phind.getText())*Double.parseDouble(tf_parv.getText()))));
+            			
+            			andmed.add(c_skill.getValue().toString());
+            			andmed.add(tf_name.getText());
+            			andmed.add(tf_parv.getText());
+            			andmed.add(Double.toString(Double.parseDouble((String)c_skill.getValue())/100*Double.parseDouble(phind.getText())*Double.parseDouble(tf_parv.getText())).toString());
+            			
+            			System.out.println(andmed);
+            			
             	tf_name.clear();
                 tf_parv.clear();
             }
@@ -250,12 +259,19 @@ public class Elemendid {
                kontroll.setText("");
             }
          });
-
-
+		
+		Button write = new Button("Salvesta");
+		grid.add(write, 3, 6);
+		
+		write.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				Txtfile tf = null;
+				tf.createFile();
+			}
+		});
+		
 		return grid;
 	}
-	
-	
 	
 	public static Node bottomPane(){
 		
@@ -275,7 +291,6 @@ public class Elemendid {
         TableColumn paakide_arv = new TableColumn("Paakide arv");
         paakide_arv.setCellValueFactory(new PropertyValueFactory<Tabel, Double>("paakide_arv"));
         paakide_arv.setMinWidth(150.0);
-        
         
         TableColumn palk = new TableColumn("Palk");
         palk.setCellValueFactory(new PropertyValueFactory<Tabel, Double>("palk"));

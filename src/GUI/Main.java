@@ -53,8 +53,7 @@ public class Main extends Application {
 		primaryStage.setTitle("Võsalõikuse arvestamise App");
 		primaryStage.setScene(scene); 
 		primaryStage.show();
-		
-		
+
 		//Saab klahviga sulgeda akent
 		root.setOnKeyPressed(new EventHandler<KeyEvent>() {
 	         public void handle(KeyEvent ke) {
