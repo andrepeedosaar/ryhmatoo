@@ -40,6 +40,7 @@ public class Txtfile {
 				}
 				
 				String tase = (String) Elemendid.andmed.get(i);
+				i++;
 				String nimi = (String) Elemendid.andmed.get(i++);
 				String paak = (String) Elemendid.andmed.get(i++);
 				String palk = (String) Elemendid.andmed.get(i++);
