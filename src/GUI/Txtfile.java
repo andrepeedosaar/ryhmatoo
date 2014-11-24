@@ -33,17 +33,22 @@ public class Txtfile {
 			outstream.write(kuupaev() + "\n" + "\n");
 			outstream.write("Tase" + "\t" + "Nimi" + "\t" + "Paakide arv " + "\t" + "Palk" + "\n");
 			
-			for(int i = 0; i < Elemendid.andmed.size(); i++){
+			int y = 0;
+			
+			for(int i = 0; i < Elemendid.andmed.size(); i=i+4){
 				
-				if(i % 4 == 0){
+				if(y % 4 == 0){
 					outstream.write("\n");
 				}
 				
-				String tase = (String) Elemendid.andmed.get(i);
-				i++;
-				String nimi = (String) Elemendid.andmed.get(i++);
-				String paak = (String) Elemendid.andmed.get(i++);
-				String palk = (String) Elemendid.andmed.get(i++);
+				String tase = (String) Elemendid.andmed.get(y);
+				y++;
+				String nimi = (String) Elemendid.andmed.get(y);
+				y++;
+				String paak = (String) Elemendid.andmed.get(y);
+				y++;
+				String palk = (String) Elemendid.andmed.get(y);
+				y++;
 				
 				outstream.write(tase + "\t");
 				outstream.write("\t" + nimi + "\t");

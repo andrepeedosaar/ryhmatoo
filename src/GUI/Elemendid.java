@@ -173,6 +173,18 @@ public class Elemendid {
             		langi_kogusumma += 350*Integer.parseInt(tf_hek.getText());
             	}
             	    	
+            	if(hektar_hetk> hektar_kokku){
+            		tf_hek.clear();
+            		hektar_hetk =0;
+            		langi_kogusumma=0;
+            		phind.setText("Suurused ei klapi!");
+            		phind.setTextFill(Color.FIREBRICK);
+            		tf_hek.setEditable(true);
+            		tf_hektar.clear();
+        			tf_hektar.setEditable(true);
+            	
+            		
+            	}
             	//Kontrollib kas koguhektarite arv klapib raskuste tasemetega 
             	if(hektar_hetk == hektar_kokku){
         			tf_hek.setEditable(false);
@@ -183,7 +195,8 @@ public class Elemendid {
         			kontroll.setText("");
         			kontroll_hek.setText("");
         			h_lisa.setDisable(true);
-        			phind.setText(Double.toString(langi_kogusumma/paagid_kokku));	
+        			phind.setText(Double.toString(langi_kogusumma/paagid_kokku));
+        			phind.setTextFill(Color.BLACK);
         		}
             	//System.out.print(palk);
             }
@@ -218,6 +231,7 @@ public class Elemendid {
 		
 		//Seitsmes rida
 		Button lisa = new Button("Lisa tabelisse");
+		lisa.setMaxWidth(Double.MAX_VALUE);
 		grid.add(lisa, 1, 6);
 		
 		//lisa nupu funktsionaalsus
@@ -242,6 +256,7 @@ public class Elemendid {
          });
 		
 		Button clear = new Button("Puhasta väljad");
+		clear.setMaxWidth(Double.MAX_VALUE);
 		grid.add(clear, 2, 6);
 		
 		//puhasta nupu funktsionaalsus
@@ -261,7 +276,9 @@ public class Elemendid {
          });
 		
 		Button write = new Button("Salvesta");
+		write.setMaxWidth(Double.MAX_VALUE);
 		grid.add(write, 3, 6);
+		
 		
 		write.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
@@ -282,19 +299,19 @@ public class Elemendid {
 		
 		TableColumn skill = new TableColumn("Tase");
 		skill.setCellValueFactory(new PropertyValueFactory<Tabel, Double>("tase"));
-		skill.setMinWidth(150.0);
+		skill.setMinWidth(200.0);
 		
         TableColumn name = new TableColumn("Nimi");
         name.setCellValueFactory(new PropertyValueFactory<Tabel, String>("nimi"));
-        name.setMinWidth(150.0);
+        name.setMinWidth(200.0);
         
         TableColumn paakide_arv = new TableColumn("Paakide arv");
         paakide_arv.setCellValueFactory(new PropertyValueFactory<Tabel, Double>("paakide_arv"));
-        paakide_arv.setMinWidth(150.0);
+        paakide_arv.setMinWidth(200.0);
         
         TableColumn palk = new TableColumn("Palk");
         palk.setCellValueFactory(new PropertyValueFactory<Tabel, Double>("palk"));
-        palk.setMinWidth(150.0);
+        palk.setMinWidth(200.0);
         
         table.setItems(data);
         table.setEditable(true);

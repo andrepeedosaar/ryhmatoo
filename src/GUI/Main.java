@@ -49,7 +49,7 @@ public class Main extends Application {
 		root.setAlignment(e.bottomPane(), Pos.CENTER);
 		
 		//Muudame akna nähtavaks
-		Scene scene = new Scene(root, 750, 600);
+		Scene scene = new Scene(root, 800, 600);
 		primaryStage.setTitle("Võsalõikuse arvestamise App");
 		primaryStage.setScene(scene); 
 		primaryStage.show();

@@ -1,5 +1,0 @@
-20141123
-
-Tase	Nimi	Paakide arv 	Palk
-
-100		sdfj		34		5270.0
