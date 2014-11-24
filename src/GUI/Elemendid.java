@@ -25,9 +25,9 @@ import javafx.scene.text.Font;
 
 public class Elemendid {
 	
-	private static int hektar_kokku;
-	private static int hektar_hetk;
-	private static int paagid_kokku;
+	private static double hektar_kokku;
+	private static double hektar_hetk;
+	private static double paagid_kokku;
 	
 	private static ComboBox c_skill;
 	private static TextField tf_name;
@@ -147,30 +147,39 @@ public class Elemendid {
 		h_lisa.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
             	
-            	hektar_kokku = Integer.parseInt(tf_hektar.getText());
+            	if (tf_hektar.getText().contains(null)){
+            		try {
+						throw new Numbrierind("Vale arv");
+					} catch (Numbrierind e) {
+						e.printStackTrace();
+					}
+            	}
+            	
+            	hektar_kokku = Double.parseDouble(tf_hektar.getText());
+            	
             	kokku.setText(tf_hektar.getText());
             	tf_hektar.setEditable(false);
             	
-            	hektar_hetk += Integer.parseInt(tf_hek.getText());
+            	hektar_hetk += Double.parseDouble(tf_hek.getText());
             	kontroll.setText(String.valueOf(hektar_hetk));
             	
-            	paagid_kokku = Integer.parseInt(tf_kogu_paagid.getText());
+            	paagid_kokku = Double.parseDouble(tf_kogu_paagid.getText());
 
             	//Liidab kokku ja leiab kogusumma
             	if(combo.getValue() == "Kerge"){
-            		langi_kogusumma += 100*Integer.parseInt(tf_hek.getText());
+            		langi_kogusumma += 100*Double.parseDouble(tf_hek.getText());
             	}
             	if(combo.getValue() == "Normaalne"){
-            		langi_kogusumma += 155*Integer.parseInt(tf_hek.getText());
+            		langi_kogusumma += 155*Double.parseDouble(tf_hek.getText());
             	}
             	if(combo.getValue() == "Raske"){
-            		langi_kogusumma += 200*Integer.parseInt(tf_hek.getText());
+            		langi_kogusumma += 200*Double.parseDouble(tf_hek.getText());
             	}
             	if(combo.getValue() == "Väga raske"){
-            		langi_kogusumma += 270*Integer.parseInt(tf_hek.getText());
+            		langi_kogusumma += 270*Double.parseDouble(tf_hek.getText());
             	}
             	if(combo.getValue() == "Kohutav"){
-            		langi_kogusumma += 350*Integer.parseInt(tf_hek.getText());
+            		langi_kogusumma += 350*Double.parseDouble(tf_hek.getText());
             	}
             	    	
             	if(hektar_hetk> hektar_kokku){
@@ -239,6 +248,7 @@ public class Elemendid {
             public void handle(ActionEvent event) {
             	//String tase, String nimi, int paakide_arv, double palk
             	data.add(new Tabel(c_skill.getValue().toString(),
+            			
             			tf_name.getText(),
             			Integer.parseInt(tf_parv.getText()),
             			Double.toString(Double.parseDouble((String)c_skill.getValue())/100*Double.parseDouble(phind.getText())*Double.parseDouble(tf_parv.getText()))));
@@ -272,6 +282,12 @@ public class Elemendid {
                h_lisa.setDisable(false);
                kokku.setText("");
                kontroll.setText("");
+               tf_hek.setEditable(true);
+       		   hektar_hetk =0;
+       		   langi_kogusumma=0;
+       		   tf_kogu_paagid.clear();
+       		   
+               
             }
          });
 		
