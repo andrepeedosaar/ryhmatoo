@@ -1,7 +1,7 @@
 package GUI;
 
 public class Numbrierind extends Exception {
-	
+
 	Numbrierind() {
 		    super();
 		  }

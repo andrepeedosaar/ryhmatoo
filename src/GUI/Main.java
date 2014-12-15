@@ -3,15 +3,10 @@ package GUI;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -27,26 +22,24 @@ public class Main extends Application {
 		root.setStyle("-fx-background-color: #f0f4c3;");
 		
 		//Lisame akna elemendid
-	    Elemendid e = new Elemendid();
-	    
 	    //Ülemine element
-		root.setTop(e.topPane());
-		root.setAlignment(e.topPane(), Pos.CENTER);
+		root.setTop(Lehed.topPane());
+		BorderPane.setAlignment(Lehed.topPane(), Pos.CENTER);
 		
 		//Parem element
-		root.setRight(e.rightPane());
-		root.setAlignment(e.rightPane(), Pos.CENTER);
+		root.setRight(Lehed.rightPane());
+		BorderPane.setAlignment(Lehed.rightPane(), Pos.CENTER);
 		
 		//Keskmine element
-		root.setCenter(e.centerPane());
+		root.setCenter(CenterLeht.centerPane());
 		
 		//Vasak element
-		root.setLeft(e.leftPane());
-		root.setAlignment(e.leftPane(), Pos.CENTER);
+		root.setLeft(Lehed.leftPane());
+		BorderPane.setAlignment(Lehed.leftPane(), Pos.CENTER);
 		
 		//Alumine element
-		root.setBottom(e.bottomPane());
-		root.setAlignment(e.bottomPane(), Pos.CENTER);
+		root.setBottom(Lehed.bottomPane());
+		BorderPane.setAlignment(Lehed.bottomPane(), Pos.CENTER);
 		
 		//Muudame akna nähtavaks
 		Scene scene = new Scene(root, 800, 600);
@@ -62,6 +55,8 @@ public class Main extends Application {
 	             }
 	         }
 	     });
+		
+		
 		
 	}
 }

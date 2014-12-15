@@ -10,8 +10,6 @@ import java.util.Date;
 
 public class Txtfile {
 	
-	static Elemendid e = new Elemendid();
-	
 	public static String kuupaev(){
 		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 		Date date = new Date();
@@ -35,19 +33,19 @@ public class Txtfile {
 			
 			int y = 0;
 			
-			for(int i = 0; i < Elemendid.andmed.size(); i=i+4){
+			for(int i = 0; i < CenterLeht.andmed.size(); i=i+4){
 				
 				if(y % 4 == 0){
 					outstream.write("\n");
 				}
 				
-				String tase = (String) Elemendid.andmed.get(y);
+				String tase = (String) CenterLeht.andmed.get(y);
 				y++;
-				String nimi = (String) Elemendid.andmed.get(y);
+				String nimi = (String) CenterLeht.andmed.get(y);
 				y++;
-				String paak = (String) Elemendid.andmed.get(y);
+				String paak = (String) CenterLeht.andmed.get(y);
 				y++;
-				String palk = (String) Elemendid.andmed.get(y);
+				String palk = (String) CenterLeht.andmed.get(y);
 				y++;
 				
 				outstream.write(tase + "\t");
